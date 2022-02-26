@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
     double begin = omp_get_wtime();
 
 
-#pragma omp parallel for num_threads(10)
+#pragma omp parallel for num_threads(8)
     for (int i = 0; i < NBT; ++i) {
         sommes(N / NBT * i, N / NBT * (i + 1));
     }
