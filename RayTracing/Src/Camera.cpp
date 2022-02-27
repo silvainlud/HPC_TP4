@@ -22,10 +22,10 @@ void Camera::genererImage(const Scene& sc, Image& im, int profondeur){
   // - les dimensions en hauteur de l'écran soront comprises dans [-H/L, H/L]
   float cotePixel = 2.0/im.getLargeur();
 
-  // Pour chaque pixel
-  for(int i=0; i<im.getLargeur(); i++){
+#pragma omp parallel for num_threads(8) collapse(2) schedule(dynamic)
     for(int j=0; j<im.getHauteur(); j++){
-      
+        for(int i=0; i<im.getLargeur(); i++){
+
       // calcul des coordonnées du centre du pixel
       float milieuX = -1 + (i+0.5f)*cotePixel;
       float milieuY =  (float)im.getHauteur()/(float)im.getLargeur()

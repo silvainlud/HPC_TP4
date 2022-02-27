@@ -8,6 +8,7 @@ using namespace std;
 #include "Vecteur.hpp"
 #include "Image.hpp"
 #include "Camera.hpp"
+#include <omp.h>
 
 // profondeur de la récursion pour le lancer de rayons
 #define PROF 2
@@ -39,8 +40,13 @@ int main(int argc, char *argv[]){
   Camera cam;
 
   // génération de l'image à partir de la caméra
-
+    double begin = omp_get_wtime();
   cam.genererImage(sc, im, PROF);
+
+    double end = omp_get_wtime();
+    std::cout << "tps de calcul : "
+              << (end - begin)
+              << "s" << std::endl;
 
 
   // sauvegarde de l'image
