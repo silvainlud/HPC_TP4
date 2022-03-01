@@ -27,7 +27,7 @@
 | 7         | 0.298s | 0.478032s |
 | 8         | 0.288s | 0.447289s |
 
-## Exercice 2
+## Exercice 3
 
 Avec Scene 02 et 512*512
 
